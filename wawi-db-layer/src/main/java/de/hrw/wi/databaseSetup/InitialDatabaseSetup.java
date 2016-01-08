@@ -23,6 +23,7 @@ public class InitialDatabaseSetup {
 		c.createStatement().executeQuery("DROP TABLE STOCK IF EXISTS");
 		c.createStatement().executeQuery("DROP TABLE WAREHOUSES IF EXISTS");
 		c.createStatement().executeQuery("DROP TABLE PRODUCTS IF EXISTS");
+		c.createStatement().executeQuery("DROP TABLE CUSTOMERS IF EXISTS");
 
 		c.createStatement()
 				.executeQuery(
@@ -37,6 +38,11 @@ public class InitialDatabaseSetup {
 								+ " constraint PK_STOCK PRIMARY KEY (number, bin),"
 								+ " constraint FK_PRODUCTS FOREIGN KEY (articleCode) REFERENCES PRODUCTS(articleCode),"
 								+ " constraint FK_WAREHOUSE FOREIGN KEY (number) REFERENCES WAREHOUSES(number))");
+		
+		
+		c.createStatement()
+		.executeQuery(
+				"CREATE TABLE CUSTOMERS (id INTEGER PRIMARY KEY, phone varchar(20),email varchar(100), adress varchar(200), lastname varchar(20), name varchar(20)) ");
 
 		c.createStatement().executeQuery("INSERT INTO PRODUCTS VALUES ('8806085948587','Samsung BD-H5500 3D Blu-ray-Player',3)");
 		c.createStatement().executeQuery("INSERT INTO PRODUCTS VALUES ('0885909560462','Apple TV MD199FD/A',2)");
@@ -58,6 +64,10 @@ public class InitialDatabaseSetup {
 		c.createStatement().executeQuery("INSERT INTO STOCK VALUES (1,0,'8806084893826',1)");
 		c.createStatement().executeQuery("INSERT INTO STOCK VALUES (1,1,'8806084893826',1)");
 		c.createStatement().executeQuery("INSERT INTO STOCK VALUES (1,2,'0636926062442',5)");
+		
+		c.createStatement().executeQuery("INSERT INTO CUSTOMERS VALUES (0, '0176 2435 2345','andriessens@hs-weingarten.de', 'Göthestraße 31 76921 Göttingen', 'Andriessens', 'Christoph')");
+		c.createStatement().executeQuery("INSERT INTO CUSTOMERS VALUES (1, '0176 2533 6735','haag@hs-weingarten.de', 'Uranusstraße 17 89231 Ulm', 'Haag', 'Denis')");
+		
 		
 		c.commit();
 		c.close();

@@ -111,6 +111,9 @@ public class RealDatabase implements DatabaseReadInterface,
 		return new HashSet<Integer>(
 				getResultAsInt("SELECT number FROM WAREHOUSES"));
 	}
+	public int getHighest() {
+		return getInt("SELECT MAX(number)+1 FROM WAREHOUSES");
+	}
 
 	public int getMaxAmountOfBins(int numberOfWarehouse) {
 		return getInt("SELECT maxBin FROM WAREHOUSES WHERE number ="

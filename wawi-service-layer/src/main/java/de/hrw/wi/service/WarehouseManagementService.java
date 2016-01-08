@@ -6,19 +6,30 @@ import java.util.Set;
 import de.hrw.wi.business.Product;
 import de.hrw.wi.business.StorageBin;
 import de.hrw.wi.persistence.DatabaseReadInterface;
+import de.hrw.wi.persistence.DatabaseWriteInterface;
+import de.hrw.wi.persistence.RealDatabase;
 
 public class WarehouseManagementService implements
 		WarehouseManagementServiceInterface {
 
 	private DatabaseReadInterface dbRead;
-
+	private DatabaseWriteInterface dbWrite;
+	private RealDatabase dbReal;
+	
 	public WarehouseManagementService(DatabaseReadInterface dbRead) {
 		this.dbRead = dbRead;
+	}
+	public WarehouseManagementService(DatabaseWriteInterface dbWrite) {
+		this.dbWrite = dbWrite;	
+	}
+	public WarehouseManagementService(RealDatabase dbReal){
+		this.dbReal = dbReal;
 	}
 
 	@Override
 	public void createWarehouses(int amount, int numberOfBins, int sizeOfEachBin) {
 		// TODO Auto-generated method stub
+	
 
 	}
 
